@@ -15,14 +15,6 @@ module.exports = function(defaults) {
 
   app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
   app.import(app.bowerDirectory + '/bootstrap/dist/css/bootstrap.css');
-  app.import(app.bowerDirectory + '/highcharts/lib/highcharts.js');
-  app.import(app.bowerDirectory + '/highcharts/lib/highcharts-more.js');
-  app.import(app.bowerDirectory + '/highcharts/lib/highcharts-3d.js');
-  app.import(app.bowerDirectory + '/highcharts/lib/modules/map.js');
-  app.import(app.bowerDirectory + '/highcharts/lib/modules/exporting.js');
-  app.import(app.bowerDirectory + '/highcharts/lib/modules/no-data-to-display.js');
-  
-  app.import('vendor/highcharts/js/world.js');
 
   return app.toTree();
 };

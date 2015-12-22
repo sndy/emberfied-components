@@ -1,29 +1,32 @@
 import Ember from 'ember';
-import ConfigMixin from 'emberfied/mixins/map-config';
+import layout from '../templates/components/world-map';
+import ConfigMixin from 'emberfied-components/mixins/map-config';
 
 export default Ember.Component.extend(ConfigMixin, {
+    layout: layout,
     title: null,
     type: null,
     dataSeriesName: null,
-    setupMap: function () {
+    didInsertElement () {
         if (this.get('type')) {
             var config = this.get('Config.' + this.get('type'));
-            if (this.$('.map-area').highcharts()) {
-                this.$('.map-area').highcharts().showLoading();
+            if (this.$().highcharts()) {
+                this.$().highcharts().showLoading();
             }
             jQuery.getJSON(config.dataUrl, (data)=> {
                 config.optionsConfig.series.every((item, i)=> {
                     if (item.name === this.get('dataSeriesName')) {
-                        this.$('.map-area').highcharts('Map', JSON.parse(JSON.stringify(config.optionsConfig)));
-                        this.$('.map-area').highcharts().series[i].setData(data, true, true, true);
-                        this.$('.map-area').highcharts().hideLoading();
+                        this.$().highcharts('Map', JSON.parse(JSON.stringify(config.optionsConfig)));
+                        this.$().highcharts().series[i].setData(data, true, true, true);
+                        this.$().highcharts().hideLoading();
                         return false;
                     }
                     return true;
                 });
             });
         }
-    }.on('didInsertElement'),
+        this._super();
+    },
     typeObserver: Ember.observer('type', function () {
         if (this.get('type')) {
             this.setupMap();

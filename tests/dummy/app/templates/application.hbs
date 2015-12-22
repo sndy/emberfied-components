@@ -1,32 +1,46 @@
-<h2 id="title">Welcome to Ember</h2>
-
-<div id="charts" class="container-fluid">
-	<div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-                {{sndy-chart type='combinationChart' renderTo='combination-chart'}}
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a>Dashboard</a>
+            </li>
+            <li>
+                <a href="#charts">Charts</a>
+            </li>
+            <li>
+                <a href="#map-container">Maps</a>
+            </li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div id="charts" class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                        {{sndy-chart type='combinationChart' renderTo='combination-chart'}}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                        {{sndy-chart type='donut' renderTo='donut'}}
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-                {{sndy-chart type='donut' renderTo='donut'}}
+        <div id="map-container" class="container-fluid">        
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    {{!--select-box
+                        content=Config.mapTypes
+                        searchEnabled=false
+                        placeholder="Choose Map"
+                        multiple=false
+                        value=selectedMap
+                        autofocus=false
+                    --}}
+                </div>
+            </div>
+            <div class="row">
+               <div id="maps" class="col-lg-12">
+                    {{world-map type=selectedMap.id dataSeriesName=selectedMap.text title=selectedMap.description}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div id="map-container" class="container-fluid">       	
-	<div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12">
-        	{{select-box
-			    content=Config.mapTypes
-			    searchEnabled=false
-			    placeholder="Choose Map"
-			    multiple=false
-			    value=selectedMap
-                autofocus=false
-			}}
-    	</div>
-	</div>
-    <div class="row">
-       <div id="maps" class="col-lg-12">
-            {{world-map type=selectedMap.id dataSeriesName=selectedMap.text title=selectedMap.description}}
-        </div>
-    </div>
-</div>
-{{outlet}}

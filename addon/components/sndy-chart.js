@@ -1,10 +1,13 @@
 import Ember from 'ember';
-import ConfigMixin from 'emberfied/mixins/chart-config';
+import layout from '../templates/components/sndy-chart';
+import ConfigMixin from 'emberfied-components/mixins/chart-config';
 
 export default Ember.Component.extend(ConfigMixin, {
+    layout: layout,
     renderTo: null,
-    setupChart: function () {
+    didInsertElement () {
         var config = this.get('Config.' + this.get('type'));
         this.$('#' + this.get('renderTo')).highcharts('Chart', config);
-    }.on('didInsertElement')
+        this._super();
+    }
 });

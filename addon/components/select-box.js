@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import layout from '../templates/components/select-box';
 
 export default Ember.Component.extend({
+    layout: layout,
     action: null,
     select2Instance: null,
-    setupComponent : function () {
+    didInsertElement () {
         var select2 = this.getSelect2Instance(), _this = this;
         select2.onSelect = function (onSelect) {
             return function (model) {
@@ -11,7 +13,8 @@ export default Ember.Component.extend({
                 onSelect.apply(this, arguments);
             };
         }(select2.onSelect);
-    }.on('didInsertElement'),
+        this._super();
+    },
     getSelect2Instance () {
         if (Ember.isEmpty(this.select2Instance)) {
             this.select2Instance = this.$().find('input.form-control').data('select2');
