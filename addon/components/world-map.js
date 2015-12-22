@@ -7,7 +7,7 @@ export default Ember.Component.extend(ConfigMixin, {
     title: null,
     type: null,
     dataSeriesName: null,
-    didInsertElement () {
+    drawMap () {
         if (this.get('type')) {
             var config = this.get('Config.' + this.get('type'));
             if (this.$().highcharts()) {
@@ -25,11 +25,14 @@ export default Ember.Component.extend(ConfigMixin, {
                 });
             });
         }
+    },
+    didInsertElement () {
+        this.drawMap();
         this._super();
     },
     typeObserver: Ember.observer('type', function () {
         if (this.get('type')) {
-            this.setupMap();
+            this.drawMap();
         }
     })
 });
