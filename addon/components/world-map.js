@@ -1,15 +1,14 @@
 import Ember from 'ember';
 import layout from '../templates/components/world-map';
-import ConfigMixin from 'emberfied-components/mixins/map-config';
 
-export default Ember.Component.extend(ConfigMixin, {
+export default Ember.Component.extend({
     layout: layout,
     title: null,
     type: null,
     dataSeriesName: null,
     drawMap () {
         if (this.get('type')) {
-            var config = this.get('Config.' + this.get('type'));
+            var config = this.get('config.' + this.get('type'));
             if (this.$().highcharts()) {
                 this.$().highcharts().showLoading();
             }
