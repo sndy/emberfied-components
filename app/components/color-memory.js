@@ -1,0 +1,1 @@
+export { default } from 'emberfied-components/components/color-memory';

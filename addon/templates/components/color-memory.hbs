@@ -1,0 +1,41 @@
+<div id='board-container'>
+	<h2>Memory Game {{gridSize}} X {{gridSize}}</h2>
+	<div id='cursor' style='top: 0px; left: 0px; width: 0px; height: 0px;'>
+	    <div class='ne corner'></div>
+	    <div class='se corner'></div>
+	    <div class='sw corner'></div>
+	    <div class='nw corner'></div>
+	</div>
+    <div class='right'>
+        <div class='logo'></div>
+        <div id='info'>
+            <h5>Your Score</h5>
+            {{currentScore}}
+        </div>
+        <div class='restart'>
+            <button type='button'>Restart</button>
+        </div>
+    </div>
+    <div id='board'>
+    </div>
+</div>
+<div id='ref'>
+    <ul class='cardrow'></ul>
+    <li class='card'>
+        <div class='brackets'></div>
+        <div class='back'></div>
+        <div class='front'>
+            <span class='txt'></span>
+        </div>
+    </li>
+    <div class='completed'>
+        <div class='popup'>
+            <h2>Congratulations! You've completed the game!</h2>
+            <button class='submit' type='button'>OK</button>
+        </div>
+    </div>
+    <div class='newgame'>
+        <button type='button'>Start New Game</button>
+    </div>
+</div>
+<div class='clearfix'></div>
