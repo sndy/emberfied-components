@@ -1,7 +1,7 @@
 # emberfied-components
 Ember components repository 
 UI studio built using Ember.js !! Demonstrates ember components- Charts, Maps created using HighCharts. Many more in the making...
-[http://emberfied.com](http://emberfied.com)
+[visit here](http://sndy.in)
 
 ## Installation
 
